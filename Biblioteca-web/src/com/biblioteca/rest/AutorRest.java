@@ -47,7 +47,6 @@ public class AutorRest {
 	@DELETE
 	@Path("/eliminar/{id}")
 	public void eliminar(@PathParam("id") Integer codigo) {
-		
 		as.eliminar(codigo);
 	}
 	
