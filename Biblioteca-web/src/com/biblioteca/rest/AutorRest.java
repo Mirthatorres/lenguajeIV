@@ -25,7 +25,6 @@ public class AutorRest {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/consultar")
-	
 	public List<Autor> consultar(){
 		return as.listado();
 	}
