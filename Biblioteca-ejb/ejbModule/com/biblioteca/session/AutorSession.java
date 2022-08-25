@@ -59,9 +59,12 @@ public class AutorSession {
 	}
 	
 	// Funcion para buscar un autor en la tabla.
-	public Autor buscar(Autor a) {
+	public Autor buscar(Integer codigo) {
 		
-		Autor autor = em.find(Autor.class, a.getCodigo());
+		if(codigo == null) {
+			return null;
+		}
+		Autor autor = em.find(Autor.class, codigo);
 		return autor;
 	}
 	
@@ -82,10 +85,11 @@ public class AutorSession {
 	}
 	
 	// Funcion para insertar o modificar
-	private Autor actualizar(Autor a) {
+	public Autor actualizar(Autor a) {
 		
 		Autor autorActualizado = null;
-		Autor autorBuscar = buscar(a);
+		Autor autorBuscar = null;
+		autorBuscar = buscar(a.getCodigo());
 		
 		if( autorBuscar == null) {
 			autorActualizado = insertar(a);
