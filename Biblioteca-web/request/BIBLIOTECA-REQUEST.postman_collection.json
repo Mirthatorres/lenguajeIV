@@ -7,108 +7,711 @@
 	},
 	"item": [
 		{
-			"name": "autores.incluir",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"codigo\": null,\r\n    \"nombre\": \"Mirtha Torres\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "autores",
+			"item": [
+				{
+					"name": "autores.incluir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": null,\r\n    \"nombre\": \"Serena Torres\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/autor/incluir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"autor",
+								"incluir"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/Biblioteca-web/rest/autor/incluir",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Biblioteca-web",
-						"rest",
-						"autor",
-						"incluir"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "autores.consultar",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "autores.buscarNombre",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "autores.eliminar",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Biblioteca-web/rest/autor/eliminar/3",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Biblioteca-web",
-						"rest",
-						"autor",
-						"eliminar",
-						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "autores.editar",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"codigo\": null,\r\n    \"nombre\": \"Serena Torres\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "autores.consultar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/autor/consultar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"autor",
+								"consultar"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/Biblioteca-web/rest/autor/editar",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Biblioteca-web",
-						"rest",
-						"autor",
-						"editar"
-					]
+				{
+					"name": "autores.buscarNombre",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "autores.eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/autor/eliminar/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"autor",
+								"eliminar",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "autores.editar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": 4,\r\n    \"nombre\": \"Alejandra Torres\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/autor/editar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"autor",
+								"editar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "autores.buscarPorCodigo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/autor/buscar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"autor",
+								"buscar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "autores.actualizar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": null,\r\n    \"nombre\": \"Martinez Martinez\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/autor/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"autor",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "ciudades",
+			"item": [
+				{
+					"name": "ciudades.consultar",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "ciudades.buscarNombre",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "ciudades.buscarPorCodigo",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "ciudades.incluir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": null,\r\n    \"descripcion\": \"Oleary\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/ciudad/incluir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"ciudad",
+								"incluir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ciudades.editar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": 2,\r\n    \"descripcion\": \"Hannah Montana\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/ciudad/editar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"ciudad",
+								"editar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ciudades.actualizar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": 2,\r\n    \"descripcion\": \"Miley Cyrus\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/ciudad/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"ciudad",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ciudades.eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/ciudad/eliminar/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"ciudad",
+								"eliminar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "clientes",
+			"item": [
+				{
+					"name": "clientes.incluir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": null,\r\n    \"nombre\": \"Homero Simpson\",\r\n    \"ciudad\": {\r\n        \"codigo\": 6\r\n    },\r\n    \"direccion\": \"Av. Carlos Antonio Lopez\",\r\n    \"observacion\": \"Cliente regular\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/cliente/incluir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"cliente",
+								"incluir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cliente.editar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": 1,\r\n    \"nombre:\": \"Romero Martinez\",\r\n    \"ciudad\": {\r\n        \"codigo\": 6\r\n    },\r\n    \"direccion\": \"Av. Jojos Antonio Lopez\",\r\n    \"observacion\": \"Cliente frecuente\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/cliente/editar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"cliente",
+								"editar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clientes.actualizar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": null,\r\n    \"nombre\": \"Mirtha Torres\",\r\n    \"ciudad\": {\r\n        \"codigo\": 6\r\n    },\r\n    \"direccion\": \"Debajo del puente\",\r\n    \"observacion\": \"Vagabundo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/cliente/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"cliente",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clientes.listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/cliente/consultar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"cliente",
+								"consultar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clientes.buscarNombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/cliente/consultar-por-nombre?q=simpson",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"cliente",
+								"consultar-por-nombre"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "simpson"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clientes.buscarPorCodigo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/cliente/buscar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"cliente",
+								"buscar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clientes.eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/cliente/eliminar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"cliente",
+								"eliminar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "libros",
+			"item": [
+				{
+					"name": "libros.incluir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": null,\r\n    \"descripcion\": \"Libro de matematica\",\r\n    \"cantidad\": 10,\r\n    \"observacion\": \"Ultima reposicion\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/libro/incluir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"libro",
+								"incluir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "libros.editar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": 1,\r\n    \"descripcion\": \"Matematica avanzada\",\r\n    \"cantidad\": 10,\r\n    \"observacion\": \"Ultima reposicion\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/libro/editar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"libro",
+								"editar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "libros.actualizar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": null,\r\n    \"descripcion\": \"Ingles Basico\",\r\n    \"cantidad\": 20,\r\n    \"observacion\": \"Edicion limitada\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/libro/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"libro",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "libros.consultar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/libro/consultar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"libro",
+								"consultar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "libros.buscarNombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/libro/consultar-por-nombre?q=matematica",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"libro",
+								"consultar-por-nombre"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "matematica"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "libros.buscarPorCodigo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/libro/buscar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"libro",
+								"buscar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "libros.eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Biblioteca-web/rest/libro/eliminar/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Biblioteca-web",
+								"rest",
+								"libro",
+								"eliminar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
