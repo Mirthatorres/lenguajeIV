@@ -3,27 +3,24 @@ package com.biblioteca.rest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.ejb.EJB;
-import javax.persistence.Query;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import com.biblioteca.entidad.Cliente;
+import com.biblioteca.session.ClienteSession;
 
-import com.biblioteca.entidad.Autor;
-import com.biblioteca.session.AutorSession;
-
-@Path("/autor")
-public class AutorRest {
-
+@Path("/cliente")
+public class ClienteRest {
 	@EJB
-	AutorSession as;
+	ClienteSession cls;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -31,9 +28,9 @@ public class AutorRest {
 	public Map<String, Object> consultar(){
 		Map<String, Object> retorno = new HashMap<String,Object>();
 		try {
-			List<Autor> autores = as.listado();
+			List<Cliente> clientes = cls.listado();
 			retorno.put("success", true);
-			retorno.put("result", autores);
+			retorno.put("result", clientes);
 			
 		} catch (Exception e) {
 
@@ -51,9 +48,9 @@ public class AutorRest {
 		Map<String, Object> retorno = new HashMap<String,Object>();
 
 		try {
-			List<Autor> autores = as.consultarAutoresPorNombre(nombre);
+			List<Cliente> clientes = cls.consultarClientesPorNombre(nombre);
 			retorno.put("success", true);
-			retorno.put("result", autores);
+			retorno.put("result", clientes);
 		} catch (Exception e) {
 
 			retorno.put("success", false);
@@ -65,13 +62,13 @@ public class AutorRest {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/incluir")
-	public Map<String, Object> incluir(Autor autor) {
+	public Map<String, Object> incluir(Cliente cliente) {
 
 		Map<String, Object> retorno = new HashMap<String,Object>();
 
 		try {
 			retorno.put("success", true);
-			retorno.put("result", as.insertar(autor));
+			retorno.put("result", cls.insertar(cliente));
 			
 		} catch (Exception e) {
 
@@ -88,7 +85,7 @@ public class AutorRest {
 		Map<String, Object> retorno = new HashMap<String,Object>();
 
 		try {
-			as.eliminar(codigo);
+			cls.eliminar(codigo);
 			retorno.put("success", true);
 			
 		} catch (Exception e) {
@@ -102,14 +99,14 @@ public class AutorRest {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/editar")
-	public Map<String, Object> editar(Autor autor) {
+	public Map<String, Object> editar(Cliente cliente) {
 
 		Map<String, Object> retorno = new HashMap<String,Object>();
 
 		try {
-			autor = as.editar(autor);
+			cliente = cls.editar(cliente);
 			retorno.put("success", true);
-			retorno.put("result", autor);
+			retorno.put("result", cliente);
 			
 		} catch (Exception e) {
 
@@ -122,14 +119,14 @@ public class AutorRest {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/actualizar")
-	public Map<String, Object> actualizar(Autor autor) {
+	public Map<String, Object> actualizar(Cliente cliente) {
 
 		Map<String, Object> retorno = new HashMap<String,Object>();
 
 		try {
 
 			retorno.put("success", true);
-			retorno.put("result", as.actualizar(autor));
+			retorno.put("result", cls.actualizar(cliente));
 			
 		} catch (Exception e) {
 
@@ -147,9 +144,9 @@ public class AutorRest {
 		Map<String, Object> retorno = new HashMap<String,Object>();
 
 		try {
-			Autor autor = as.buscar(codigo);
+			Cliente cliente = cls.buscar(codigo);
 			retorno.put("success", true);
-			retorno.put("result", autor);
+			retorno.put("result", cliente);
 		} catch (Exception e) {
 
 			retorno.put("success", false);

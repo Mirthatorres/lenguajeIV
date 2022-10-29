@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Autor {
 	
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "aut_codigo")
 	private Integer codigo;
 	

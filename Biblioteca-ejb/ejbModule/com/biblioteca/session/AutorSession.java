@@ -14,7 +14,7 @@ import com.biblioteca.entidad.Autor;
 @Stateless
 public class AutorSession {
 	
-	@PersistenceContext
+	@PersistenceContext(name = "BibliotecaPU")
 	EntityManager em;
 	
 	// Funcion para listar todos los autores.
@@ -27,7 +27,7 @@ public class AutorSession {
 	}
 	
 	// Funcion para filtrar por nombre.
-	public List<Autor> consultarAutoresPorNombreV1(String nombre){
+	public List<Autor> consultarAutoresPorNombre(String nombre){
 		
 		String jpql = "SELECT a FROM Autor a WHERE UPPER(a.nombre) LIKE :n ORDER BY a.codigo";
 		Query q = em.createQuery(jpql);
@@ -37,7 +37,7 @@ public class AutorSession {
 	}
 
 	// Funcion para filtrar por nombre.
-	public Map<String, Object> consultarAutoresPorNombre(String nombre){
+	public Map<String, Object> consultarAutoresPorNombreV2(String nombre){
 		
 		Map<String, Object> retorno = new HashMap<String,Object>();
 		
@@ -69,10 +69,12 @@ public class AutorSession {
 	}
 	
 	
-	//Funcion para modificar un autor.
+	//Funcion para editar un autor.
 	public Autor editar(Autor a) {
 		
-		a = em.merge(a);
+		if( buscar(a.getCodigo()) != null) {
+			a = em.merge(a);
+		}
 		return a;
 	}
 	
@@ -103,6 +105,8 @@ public class AutorSession {
 
 	public void eliminar(Integer codigo) {
 		Autor autorBuscar = em.find(Autor.class, codigo);
-		em.remove(autorBuscar);
+		if(autorBuscar != null) {
+			em.remove(autorBuscar);
+		}
 	}
 }

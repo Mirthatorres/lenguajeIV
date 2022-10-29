@@ -2,7 +2,11 @@ package com.biblioteca.entidad;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -10,15 +14,17 @@ import javax.persistence.Table;
 public class Cliente {
 	
 	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column (name = "cli_codigo")
 	private Integer codigo;
 
 	@Column (name = "cli_nombre")
 	private String nombre;
 
-	@Column (name = "cli_ciudad")
-	private Integer ciudad;
-
+	@ManyToOne
+	@JoinColumn(name = "cli_ciudad")
+	Ciudad ciudad;
+	
 	@Column (name = "cli_direccion")
 	private String direccion;
 
@@ -45,14 +51,6 @@ public class Cliente {
 		this.nombre = nombre;
 	}
 
-	public Integer getCiudad() {
-		return ciudad;
-	}
-
-	public void setCiudad(Integer ciudad) {
-		this.ciudad = ciudad;
-	}
-
 	public String getDireccion() {
 		return direccion;
 	}
@@ -67,6 +65,14 @@ public class Cliente {
 
 	public void setObservacion(String observacion) {
 		this.observacion = observacion;
+	}
+
+	public Ciudad getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(Ciudad ciudad) {
+		this.ciudad = ciudad;
 	}
 	
 }

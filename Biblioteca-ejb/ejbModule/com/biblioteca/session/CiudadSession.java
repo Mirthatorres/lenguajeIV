@@ -2,15 +2,17 @@ package com.biblioteca.session;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.biblioteca.entidad.Ciudad;
 
+@Stateless
 public class CiudadSession {
 	
-	@PersistenceContext
+	@PersistenceContext(name = "BibliotecaPU")
 	EntityManager em;
 	
 	// Funcion para listar todas las ciudades.
@@ -23,9 +25,11 @@ public class CiudadSession {
 	}
 	
 	// Funcion para buscar una ciudad en la tabla.
-	public Ciudad buscar(Ciudad c) {
-		
-		Ciudad ciudad = em.find(Ciudad.class, c.getCodigo());
+	public Ciudad buscar(Integer c) {
+		if(c == null) {
+			return null;
+		}
+		Ciudad ciudad = em.find(Ciudad.class, c);
 		return ciudad;
 	}
 	
@@ -46,10 +50,10 @@ public class CiudadSession {
 	}
 	
 	// Funcion para insertar o modificar
-	private Ciudad actualizar(Ciudad c) {
+	public Ciudad actualizar(Ciudad c) {
 		
 		Ciudad ciudadActualizada = null;
-		Ciudad ciudadBuscar = buscar(c);
+		Ciudad ciudadBuscar = buscar(c.getCodigo());
 		
 		if( ciudadBuscar == null) {
 			ciudadActualizada = insertar(c);
@@ -65,4 +69,14 @@ public class CiudadSession {
 		Ciudad ciudadBuscar = em.find(Ciudad.class, codigo);
 		em.remove(ciudadBuscar);
 	}
+	
+	// Funcion para filtrar por nombre.
+		public List<Ciudad> consultarCiudadesPorNombre(String nombre){
+			
+			String jpql = "SELECT c FROM Ciudad c WHERE UPPER(c.descripcion) LIKE :n ORDER BY c.codigo";
+			Query q = em.createQuery(jpql);
+			q.setParameter("n", "%"+ nombre.toUpperCase() + "%");
+			List<Ciudad> ciudades = q.getResultList();
+			return ciudades;
+		}
 }

@@ -2,15 +2,17 @@ package com.biblioteca.session;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.biblioteca.entidad.Cliente;
 
+@Stateless
 public class ClienteSession {
 
-	@PersistenceContext
+	@PersistenceContext(name = "BibliotecaPU")
 	EntityManager em;
 	
 	// Funcion para listar todos los clientes.
@@ -23,9 +25,12 @@ public class ClienteSession {
 	}
 	
 	// Funcion para buscar un cliente en la tabla.
-	public Cliente buscar(Cliente c) {
+	public Cliente buscar(Integer c) {
 		
-		Cliente cliente = em.find(Cliente.class, c.getCodigo());
+		if(c == null) {
+			return null;
+		}
+		Cliente cliente = em.find(Cliente.class, c);
 		return cliente;
 	}
 	
@@ -46,12 +51,12 @@ public class ClienteSession {
 	}
 	
 	// Funcion para insertar o modificar
-	private Cliente actualizar(Cliente c) {
+	public Cliente actualizar(Cliente c) {
 		
 		Cliente clienteActualizado = null;
-		Cliente clienteBuscar = buscar(c);
+		Cliente clienteBuscar = buscar(c.getCodigo());
 		
-		if( clienteBuscar == null) {
+		if( clienteBuscar == null || c.getCodigo() == 0) {
 			clienteActualizado = insertar(c);
 		}else {
 			clienteActualizado = editar(c);
@@ -65,4 +70,14 @@ public class ClienteSession {
 		Cliente clienteBuscar = em.find(Cliente.class, codigo);
 		em.remove(clienteBuscar);
 	}
+
+	// Funcion para filtrar por nombre.
+		public List<Cliente> consultarClientesPorNombre(String nombre){
+			
+			String jpql = "SELECT c FROM Cliente c WHERE UPPER(c.nombre) LIKE :n ORDER BY c.codigo";
+			Query q = em.createQuery(jpql);
+			q.setParameter("n", "%"+ nombre.toUpperCase() + "%");
+			List<Cliente> clientes = q.getResultList();
+			return clientes;
+		}
 }

@@ -2,12 +2,14 @@ package com.biblioteca.session;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.biblioteca.entidad.Libro;
 
+@Stateless
 public class LibroSession {
 
 	@PersistenceContext
@@ -23,9 +25,12 @@ public class LibroSession {
 	}
 	
 	// Funcion para buscar un libro en la tabla.
-	public Libro buscar(Libro l) {
+	public Libro buscar(Integer l) {
 		
-		Libro libro = em.find(Libro.class, l.getCodigo());
+		if(l == null) {
+			return null;
+		}
+		Libro libro = em.find(Libro.class, l);
 		return libro;
 	}
 	
@@ -46,10 +51,10 @@ public class LibroSession {
 	}
 	
 	// Funcion para insertar o modificar
-	private Libro actualizar(Libro l) {
+	public Libro actualizar(Libro l) {
 		
 		Libro libroActualizado = null;
-		Libro libroBuscar = buscar(l);
+		Libro libroBuscar = buscar(l.getCodigo());
 		
 		if( libroBuscar == null) {
 			libroActualizado = insertar(l);
@@ -65,4 +70,14 @@ public class LibroSession {
 		Libro libroBuscar = em.find(Libro.class, codigo);
 		em.remove(libroBuscar);
 	}
+
+	// Funcion para filtrar por nombre.
+		public List<Libro> consultarLibrosPorNombre(String nombre){
+			
+			String jpql = "SELECT l FROM Libro l WHERE UPPER(l.descripcion) LIKE :n ORDER BY l.codigo";
+			Query q = em.createQuery(jpql);
+			q.setParameter("n", "%"+ nombre.toUpperCase() + "%");
+			List<Libro> libros = q.getResultList();
+			return libros;
+		}
 }

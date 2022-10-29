@@ -3,27 +3,23 @@ package com.biblioteca.rest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.ejb.EJB;
-import javax.persistence.Query;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import com.biblioteca.entidad.Ciudad;
+import com.biblioteca.session.CiudadSession;
 
-
-import com.biblioteca.entidad.Autor;
-import com.biblioteca.session.AutorSession;
-
-@Path("/autor")
-public class AutorRest {
-
+@Path("/ciudad")
+public class CiudadRest {
 	@EJB
-	AutorSession as;
+	CiudadSession cs;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -31,9 +27,9 @@ public class AutorRest {
 	public Map<String, Object> consultar(){
 		Map<String, Object> retorno = new HashMap<String,Object>();
 		try {
-			List<Autor> autores = as.listado();
+			List<Ciudad> ciudades = cs.listado();
 			retorno.put("success", true);
-			retorno.put("result", autores);
+			retorno.put("result", ciudades);
 			
 		} catch (Exception e) {
 
@@ -51,9 +47,9 @@ public class AutorRest {
 		Map<String, Object> retorno = new HashMap<String,Object>();
 
 		try {
-			List<Autor> autores = as.consultarAutoresPorNombre(nombre);
+			List<Ciudad> ciudades = cs.consultarCiudadesPorNombre(nombre);
 			retorno.put("success", true);
-			retorno.put("result", autores);
+			retorno.put("result", ciudades);
 		} catch (Exception e) {
 
 			retorno.put("success", false);
@@ -65,13 +61,13 @@ public class AutorRest {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/incluir")
-	public Map<String, Object> incluir(Autor autor) {
+	public Map<String, Object> incluir(Ciudad ciudad) {
 
 		Map<String, Object> retorno = new HashMap<String,Object>();
 
 		try {
 			retorno.put("success", true);
-			retorno.put("result", as.insertar(autor));
+			retorno.put("result", cs.insertar(ciudad));
 			
 		} catch (Exception e) {
 
@@ -88,7 +84,7 @@ public class AutorRest {
 		Map<String, Object> retorno = new HashMap<String,Object>();
 
 		try {
-			as.eliminar(codigo);
+			cs.eliminar(codigo);
 			retorno.put("success", true);
 			
 		} catch (Exception e) {
@@ -102,14 +98,14 @@ public class AutorRest {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/editar")
-	public Map<String, Object> editar(Autor autor) {
+	public Map<String, Object> editar(Ciudad ciudad) {
 
 		Map<String, Object> retorno = new HashMap<String,Object>();
 
 		try {
-			autor = as.editar(autor);
+			ciudad = cs.editar(ciudad);
 			retorno.put("success", true);
-			retorno.put("result", autor);
+			retorno.put("result", ciudad);
 			
 		} catch (Exception e) {
 
@@ -122,14 +118,14 @@ public class AutorRest {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/actualizar")
-	public Map<String, Object> actualizar(Autor autor) {
+	public Map<String, Object> actualizar(Ciudad ciudad) {
 
 		Map<String, Object> retorno = new HashMap<String,Object>();
 
 		try {
 
 			retorno.put("success", true);
-			retorno.put("result", as.actualizar(autor));
+			retorno.put("result", cs.actualizar(ciudad));
 			
 		} catch (Exception e) {
 
@@ -147,9 +143,9 @@ public class AutorRest {
 		Map<String, Object> retorno = new HashMap<String,Object>();
 
 		try {
-			Autor autor = as.buscar(codigo);
+			Ciudad ciudad = cs.buscar(codigo);
 			retorno.put("success", true);
-			retorno.put("result", autor);
+			retorno.put("result", ciudad);
 		} catch (Exception e) {
 
 			retorno.put("success", false);
